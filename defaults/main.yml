@@ -1,0 +1,11 @@
+---
+# Elastic repo
+kb_yum_repo_baseurl: https://artifacts.elastic.co/packages/5.x/yum
+kb_yum_repo_gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+# Kibana configuration
+kb_server_port: 5601
+kb_server_host: localhost
+kb_server_name: "{{ inventory_hostname }}"
+kb_elasticsearch_url: http://localhost:9200
+kb_logging_dest: stdout

@@ -1,0 +1,38 @@
+---
+- name: Kibana | Add GPG Key
+  rpm_key:
+    key: "{{ kb_yum_repo_gpgkey }}"
+    state: present
+
+- name: Kibana | Add Repository
+  template:
+    src: elastic.repo.j2
+    dest: /etc/yum.repos.d/elastic.repo
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Kibana | Install Packages
+  package:
+    name: kibana
+    state: present
+
+- name: Kibana | Configure Service
+  template:
+    src: kibana.yml.j2
+    dest: /etc/kibana/kibana.yml
+    owner: kibana
+    group: kibana
+    mode: 0660
+  notify: restart kibana
+
+- name: Kibana | Start and Enable Service
+  service:
+    name: kibana
+    state: started
+    enabled: yes
+
+- name: Kibana | Ensure Service is Running
+  wait_for:
+    port: "{{ kb_http_port }}"
+    delay: 3
