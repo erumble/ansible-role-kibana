@@ -34,5 +34,5 @@
 
 - name: Kibana | Ensure Service is Running
   wait_for:
-    port: "{{ kb_http_port }}"
+    port: "{{ kb_server_port }}"
     delay: 3
