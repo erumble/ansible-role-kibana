@@ -17,6 +17,14 @@
     name: kibana
     state: present
 
+- name: Kibana | Create Logging Dir
+  file:
+    name: /var/log/kibana
+    state: directory
+    owner: kibana
+    group: kibana
+    mode: 0755
+
 - name: Kibana | Configure Service
   template:
     src: kibana.yml.j2

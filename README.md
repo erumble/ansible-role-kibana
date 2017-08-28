@@ -18,7 +18,7 @@ IcedTea OpenJDK 1.8.0.91+
 `kb_server_host` | `localhost`
 `kb_server_name` | `"{{ inventory_hostname }}"`
 `kb_elasticsearch_url` | `http://localhost:9200`
-`kb_logging_dest` | `stdout`
+`kb_logging_dest` | `/var/log/kibana/kibana.log`
 
 ## Usage
 ```
